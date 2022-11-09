@@ -81,7 +81,7 @@ public class SDFImporter : EditorWindow
 		var assimpLibraryPath = "./CLOiSim_Data/Plugins/libassimp";
 #	endif
 #endif
-       // Assimp.Unmanaged.AssimpLibrary.Instance.LoadLibrary(assimpLibraryPath);
+        Assimp.Unmanaged.AssimpLibrary.Instance.LoadLibrary(assimpLibraryPath);
 
         // Calling this method is required for windows version
         // refer to https://thomas.trocha.com/blog/netmq-on-unity3d/

@@ -1,7 +1,4 @@
 using UnityEngine;
-using Unity.Robotics.ROSTCPConnector;
-using RosMessageTypes.Geometry;
-using Unity.Robotics.UrdfImporter.Control;
 
 namespace RosSharp.Control
 {
@@ -23,8 +20,6 @@ namespace RosSharp.Control
         public float damping = 10;
         
         private float lastCmdReceived = 0f;
-
-        private RotationDirection direction;
 
         void Start()
         {
@@ -53,7 +48,7 @@ namespace RosSharp.Control
             ArticulationDrive drive = joint.xDrive;
             if (float.IsNaN(wheelSpeed))
             {
-                drive.targetVelocity = ((2 * maxLinearSpeed) / wheelRadius) * Mathf.Rad2Deg * (int)direction;
+                drive.targetVelocity = ((2 * maxLinearSpeed) / wheelRadius) * Mathf.Rad2Deg;
             }
             else
             {
