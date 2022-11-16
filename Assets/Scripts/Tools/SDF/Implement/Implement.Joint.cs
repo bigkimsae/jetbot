@@ -59,7 +59,7 @@ namespace SDF
 
 			public static void MakeRevolute(in UE.ArticulationBody body, in SDF.Axis axis)
 			{
-				body.jointType = UE.ArticulationJointType.SphericalJoint;
+				body.jointType = UE.ArticulationJointType.RevoluteJoint;
 				body.linearDamping = 0.05f;
 				body.angularDamping = 0.05f;
 
@@ -93,7 +93,7 @@ namespace SDF
 				{
 					if (jointAxis.Equals(UE.Vector3.left))
 					{
-						ReverseArticulationBodyAxis(body, UE.Vector3.forward);
+						ReverseArticulationBodyAxis(body, UE.Vector3.up);
 					}
 					body.xDrive = drive;
 					body.twistLock = (axis.limit.Use()) ? UE.ArticulationDofLock.LimitedMotion : UE.ArticulationDofLock.FreeMotion;
@@ -267,7 +267,7 @@ namespace SDF
 
 			private static void ReverseArticulationBodyAxis(in UE.ArticulationBody body, in UE.Vector3 euler)
 			{
-				body.anchorRotation *= UE.Quaternion.Euler(euler * 180);
+				body.anchorRotation *= UE.Quaternion.Euler(euler * 90);
 				body.parentAnchorRotation *= UE.Quaternion.Euler(euler  * 180);
 			}
 

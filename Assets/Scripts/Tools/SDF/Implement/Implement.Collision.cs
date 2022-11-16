@@ -67,7 +67,7 @@ namespace SDF
 
 						var combinedMeshCollider = targetObject.AddComponent<UE.MeshCollider>();
 						combinedMeshCollider.sharedMesh = mergedMesh;
-						combinedMeshCollider.convex = false;
+						combinedMeshCollider.convex = true;
 						combinedMeshCollider.cookingOptions = CookingOptions;
 						combinedMeshCollider.hideFlags |= UE.HideFlags.NotEditable;
 					}

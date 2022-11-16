@@ -47,7 +47,7 @@ namespace SDF
 					{
 						collisionObject.layer = Implement.Collision.PlaneLayerIndex;
 						var collider = collisionObject.GetComponentInChildren<UE.MeshCollider>();
-						collider.convex = false;
+						collider.convex = true;
 					}
 
 #if UNITY_EDITOR

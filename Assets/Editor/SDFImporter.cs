@@ -61,9 +61,8 @@ public class SDFImporter : EditorWindow
     
     void Awake()
     {
-        GetResourcesPaths();
 
-        // Load Library for Assimp
+	    // Load Library for Assimp
 #if UNITY_EDITOR
 #	if UNITY_EDITOR_LINUX
 		var assimpLibraryPath = "./Assets/Plugins/AssimpNet.4.1.0/runtimes/linux-x64/native/libassimp";
@@ -121,53 +120,5 @@ public class SDFImporter : EditorWindow
 	    }
 
 	    yield return null;
-    }
-    private void GetResourcesPaths()
-    {
-        var separator = new char[] { ':' };
-#if UNITY_EDITOR
-#else
-		var filePathEnv = Environment.GetEnvironmentVariable("CLOISIM_FILES_PATH");
-		var filePaths = filePathEnv?.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-
-		if (filePaths == null)
-		{
-			Debug.LogWarning("CLOISIM_FILES_PATH is null. It will use default path. \n" + String.Join(", ", fileRootDirectories));
-		}
-		else
-		{
-			fileRootDirectories.Clear();
-			fileRootDirectories.AddRange(filePaths);
-			Debug.Log("Files Directory Paths: " + String.Join(", ", fileRootDirectories));
-		}
-
-		var modelPathEnv = Environment.GetEnvironmentVariable("CLOISIM_MODEL_PATH");
-		var modelPaths = modelPathEnv?.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-
-		if (modelPaths == null)
-		{
-			Debug.LogWarning("CLOISIM_MODEL_PATH is null. It will use default path. \n" + String.Join(", ", modelRootDirectories));
-		}
-		else
-		{
-			modelRootDirectories.Clear();
-			modelRootDirectories.AddRange(modelPaths);
-			Debug.Log("Models Directory Paths: " + String.Join(", ", modelRootDirectories));
-		}
-
-		var worldPathEnv = Environment.GetEnvironmentVariable("CLOISIM_WORLD_PATH");
-		var worldPaths = worldPathEnv?.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-
-		if (worldPaths == null)
-		{
-			Debug.LogWarning("CLOISIM_WORLD_PATH is null. It will use default path. \n" + String.Join(", ", worldRootDirectories));
-		}
-		else
-		{
-			worldRootDirectories.Clear();
-			worldRootDirectories.AddRange(worldPaths);
-			Debug.Log("World Directory Paths: " + String.Join(", ", worldRootDirectories));
-		}
-#endif
     }
 }
